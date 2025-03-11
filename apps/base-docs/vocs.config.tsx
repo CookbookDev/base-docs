@@ -8,6 +8,35 @@ import { sidebar } from './sidebar.ts';
 const googleAnalyticsScript = {
   __html: `
       window.dataLayer = window.dataLayer || [];
+      (function() {
+        function initCookbook() {
+          // Cookbook Onboard (AI Assistant). API key is public so it's fine to just hardcode it here.
+          const COOKBOOK_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjNiZWQ1M2ZlZWFiYmU4NWVmYzc1MzciLCJpYXQiOjE3MTUyMDM0MTEsImV4cCI6MjAzMDc3OTQxMX0.yEcjTKRIR1TBGxXr854N5iNw5WTuXI_ihmk75YXDc74";
+
+          let element = document.getElementById('__cookbook');
+          if (!element) {
+            element = document.createElement('div');
+            element.id = '__cookbook';
+            element.dataset.apiKey = COOKBOOK_API_KEY;
+            document.body.appendChild(element);
+          }
+      
+          let script = document.getElementById('__cookbook-script');
+          if (!script) {
+            script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@cookbookdev/docsbot/dist/standalone/index.cjs.js';
+            script.id = '__cookbook-script';
+            script.defer = true;
+            document.body.appendChild(script);
+          }
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initCookbook);
+        } else {
+          initCookbook();
+        }
+      })();
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-TKCM02YFWN');
