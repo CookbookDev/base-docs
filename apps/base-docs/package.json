@@ -17,6 +17,7 @@
     "@coinbase/cookie-banner": "^1.0.3",
     "@coinbase/cookie-manager": "^1.1.1",
     "@coinbase/onchainkit": "^0.37.5",
+    "@cookbookdev/docsbot": "^4.24.13",
     "@googleapis/sheets": "^5.0.5",
     "@types/react": "latest",
     "@vercel/node": "^3.0.17",
